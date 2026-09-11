@@ -62,7 +62,7 @@ endef
 
 #run_make_in_subdirs(directory, target, makefile_flags)
 define run_make_in_subdirs
-$(foreach dir,$(wildcard $(1)/*/),$(call run_make,$(dir),$(2),$(3))$(newline))
+$(foreach dir,$(wildcard $(1)/*),$(call run_make,$(dir),$(2),$(3))$(newline))
 endef
 
 #recursive_wildcard(directory, pattern)
@@ -70,5 +70,5 @@ endef
 #2.1| for each subdirectory in this directory
 #2.2| run this nonsense again in the subdirectory we found
 define rwildcard
-$(wildcard $(1)/$(2))$(foreach dir,$(wildcard $(1)/*/),$(call rwildcard,$(dir),$(2)))
+$(wildcard $(1)/$(2))$(foreach dir,$(wildcard $(1)/*),$(call rwildcard,$(dir),$(2)))
 endef
