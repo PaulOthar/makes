@@ -22,7 +22,7 @@ if exist "$(call winpath,$(1))" $(2)
 endef
 
 define run_make
-	$(MAKE) --no-print-directory $(3) -C "$(1)" $(2) 2>NUL || echo "ERROR: $(1) -> $(2) failed"
+	$(MAKE) --no-print-directory $(3) -C "$(1)" $(2) SHELL=cmd.exe 2>NUL || echo "ERROR: $(1) -> $(2) failed"
 endef
 
 else
