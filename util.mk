@@ -70,5 +70,5 @@ endef
 #2.1| for each subdirectory in this directory
 #2.2| run this nonsense again in the subdirectory we found
 define rwildcard
-$(wildcard $(1)/$(2))$(foreach dir,$(wildcard $(1)/*),$(call rwildcard,$(dir),$(2)))
+$(strip $(wildcard $(1)/$(2)) $(foreach dir,$(wildcard $(1)/*),$(call rwildcard,$(dir),$(2))))
 endef
